@@ -81,6 +81,24 @@ const incidentData = [
     severity: "Medium",
     industry: "IoT",
     uploadedAt: new Date(Date.now() - 259200000) // 3 days ago
+  },
+  {
+    id: 4,
+    title: "New Variant of Banking Trojan Detected",
+    description: "A new variant of a banking trojan has been detected in the wild, targeting customers of several major banks. The trojan is capable of stealing sensitive financial...",
+    category: "Viruses",
+    severity: "Low",
+    industry: "Finance",
+    uploadedAt: new Date(Date.now() - 604800000) // 1 week ago
+  },
+  {
+    id: 5,
+    title: "Critical Vulnerability in Industrial Control Systems",
+    description: "A critical vulnerability has been discovered in industrial control systems used in critical infrastructure sectors. The vulnerability, dubbed 'IndustriOS', allows...",
+    category: "Viruses",
+    severity: "Critical",
+    industry: "Critical Infrastructure",
+    uploadedAt: new Date(Date.now() - 1209600000) // 2 weeks ago
   }
 ]
 
@@ -125,7 +143,7 @@ export default function Feed() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="overflow-hidden"
       >
-        <div className="p-4 mt-10 bg-transperant rounded-lg">
+        <div className="p-4 h-full mt-10 bg-[#000] rounded-lg">
           <h2 className="text-xl font-bold mb-4">Filters</h2>
           <div className="mb-4">
             <h3 className="font-semibold mb-2">Malware Type</h3>
