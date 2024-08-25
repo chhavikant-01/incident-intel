@@ -4,6 +4,8 @@ import Layout from './components/Layout';
 import ReportWithDatePicker from './components/Report';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import Feed2 from './components/Feed2';
+import Post from './components/Post';
 
 function App() {
   return (
@@ -11,8 +13,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Feed />} />
-            <Route path="report" element={<ReportWithDatePicker />} />
+            <Route index element={<Feed2 />} />
+            <Route path="/report" element={<ReportWithDatePicker />} />
+            <Route path="/post/:postId" element={<Post />} />
           </Route>
         </Routes>
       </BrowserRouter>
