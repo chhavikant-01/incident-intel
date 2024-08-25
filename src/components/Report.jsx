@@ -1,26 +1,23 @@
-"use client"
-
 import * as React from "react"
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { addDays, format } from "date-fns"
-import { DateRange } from "react-day-picker"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
+import { cn } from "../lib/utils"
+import { Button } from "./ui/button"
+import { Calendar } from "./ui/calendar"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "./ui/card"
+import { Label } from "./ui/label"
+import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover"
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "./ui/select"
 
 export default function ReportWithDatePicker() {
-  const [date, setDate] = React.useState<DateRange | undefined>({
+  const [date, setDate] = React.useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   })
 
   return (
-    <Card className="w-full max-w-2xl">
+    <div className="flex flex-col items-center justify-center space-y-8">
+    <Card className="w-full max-w-2xl bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e]">
       <CardHeader>
         <CardTitle>Cyber Threat Analysis Report</CardTitle>
         <CardDescription>Generate a report for the selected date range and filters.</CardDescription>
@@ -54,7 +51,7 @@ export default function ReportWithDatePicker() {
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent className="w-auto p-0 bg-slate-800 text-white border-0" align="start">
                 <Calendar
                   initialFocus
                   mode="range"
@@ -115,5 +112,6 @@ export default function ReportWithDatePicker() {
         <Button>Download Report</Button>
       </CardFooter>
     </Card>
+    </div>
   )
 }

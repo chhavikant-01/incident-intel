@@ -1,12 +1,22 @@
 import './App.css';
-import { Button } from '../src/components/ui/button';
 import Feed from './components/Feed';
+import Layout from './components/Layout';
+import ReportWithDatePicker from './components/Report';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
-    <>
-      <Feed />
-    </>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Feed />} />
+            <Route path="report" element={<ReportWithDatePicker />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

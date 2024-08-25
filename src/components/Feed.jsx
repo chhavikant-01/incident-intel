@@ -143,7 +143,7 @@ export default function Feed() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="overflow-hidden"
       >
-        <div className="p-4 h-full mt-10 bg-[#000] rounded-lg">
+        <div className="p-4 h-full mt-10 rounded-lg">
           <h2 className="text-xl font-bold mb-4">Filters</h2>
           <div className="mb-4">
             <h3 className="font-semibold mb-2">Malware Type</h3>
