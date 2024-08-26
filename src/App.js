@@ -6,20 +6,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Feed2 from './components/Feed2';
 import Post from './components/Post';
+import Verified from './components/Verified';
 
 function App() {
   return (
-    <ThemeProvider>
+    // <ThemeProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Feed2 />} />
             <Route path="/report" element={<ReportWithDatePicker />} />
             <Route path="/post/:postId" element={<Post />} />
+            <Route path="/verified" element={<Verified />} />
           </Route>
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
 
