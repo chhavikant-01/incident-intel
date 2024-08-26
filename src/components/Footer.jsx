@@ -2,53 +2,53 @@ import { Link } from "react-router-dom";
 
 export default function Component() {
   return (
-    <footer className="bg-muted pt-3 sm:pt-3 pb-2 text-muted-foreground">
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-1 md:px-6">
-        <div className="flex flex-col gap-2">
-          <Link to ="#" className="flex items-center gap-2" prefetch={false}>
+    <footer className="bg-muted pt-2 sm:pt-2 pb-1 text-muted-foreground">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 md:px-4">
+        <div className="flex flex-col gap-1">
+          <Link to="#" className="flex items-center gap-1" prefetch={false}>
             <MountainIcon className="h-6 w-6" />
             <span className="text-xl font-bold">Incident Intel</span>
           </Link>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Comprehensive cyber threat analysis and incident intelligence.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-1">
           <div className="grid">
             <h4 className="text-sm font-medium text-foreground">Quick Links</h4>
-            <Link to ="#" className="text-sm hover:underline" prefetch={false}>
+            <Link to="#" className="text-xs hover:underline" prefetch={false}>
               About
             </Link>
-            <Link to ="#" className="text-sm hover:underline" prefetch={false}>
+            <Link to="#" className="text-xs hover:underline" prefetch={false}>
               Contact
             </Link>
           </div>
           <div className="grid">
             <h4 className="text-sm font-medium text-foreground">Resources</h4>
-            <Link to ="#" className="text-sm hover:underline" prefetch={false}>
+            <Link to="#" className="text-xs hover:underline" prefetch={false}>
               Threat Reports
             </Link>
-            <Link to ="#" className="text-sm hover:underline" prefetch={false}>
+            <Link to="#" className="text-xs hover:underline" prefetch={false}>
               FAQ
             </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
           <h4 className="text-sm font-medium text-foreground">Connect with us</h4>
-          <div className="flex gap-4">
-            <Link to ="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+          <div className="flex gap-2">
+            <Link to="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
               <TwitterIcon className="h-5 w-5" />
             </Link>
-            <Link to ="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+            <Link to="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
               <LinkedinIcon className="h-5 w-5" />
             </Link>
-            <Link to ="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+            <Link to="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
               <GitlabIcon className="h-5 w-5" />
             </Link>
           </div>
         </div>
       </div>
-      <div className="mt-3 border-t border-border text-center text-sm text-muted-foreground">
+      <div className="mt-2 border-t border-border text-center text-xs text-muted-foreground">
         &copy; 2024 Cyber Intel. All rights reserved.
       </div>
     </footer>
