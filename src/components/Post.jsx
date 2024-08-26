@@ -61,14 +61,6 @@ export default function Post() {
     <div className="min-h-screen bg-background">
       <header className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] text-white py-6 sticky top-0 z-50">
         <div className="container mx-auto px-4">
-            <Link
-                to={'/incidents'}
-            >
-          <Button variant="outline" className="mb-4 text-white">
-            <ArrowLeftIcon className="w-4 h-4 mr-2" />
-            Back to Incidents
-          </Button>
-            </Link>
           <h1 className="text-3xl font-bold mb-2">{incidentData.title}</h1>
           <div className="flex items-center space-x-4">
             <Badge variant="destructive" className="text-sm">
