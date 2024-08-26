@@ -78,17 +78,17 @@ export default function TopActors() {
 
     // Data to be replaced with real DB data
     const actors = [
-        { id: 11, name: 'Vulnerability Researcher Y', description: 'Finds and reports vulnerabilities', score: 4 },
         { id: 1, name: 'APT29', description: 'Russian state-sponsored hacking group', score: -2 },
-        { id: 7, name: 'Threat Intel Org A', description: 'Provides valuable threat intelligence', score: 11 },
+        { id: 2, name: 'Lazarus Group', description: 'North Korean state-sponsored hacking group', score: 1 },
         { id: 3, name: 'FIN7', description: 'Cybercriminal group targeting financial institutions', score: 3 },
         { id: 4, name: 'Fancy Bear', description: 'Russian state-sponsored hacking group', score: 5 },
         { id: 5, name: 'Cozy Bear', description: 'Russian state-sponsored hacking group', score: 7 },
-        { id: 10, name: 'Incident Response Team', description: 'Responds to and mitigates cyber threats', score: 6 },
         { id: 6, name: 'Sandworm', description: 'Russian state-sponsored hacking group', score: 9 },
+        { id: 7, name: 'Threat Intel Org A', description: 'Provides valuable threat intelligence', score: 11 },
         { id: 8, name: 'Cybersecurity Inc.', description: 'Offers advanced security solutions', score: 13 },
         { id: 9, name: 'Security Researcher X', description: 'Researches and reports on new threats', score: 15 },
-        { id: 2, name: 'Lazarus Group', description: 'North Korean state-sponsored hacking group', score: 1 },
+        { id: 10, name: 'Incident Response Team', description: 'Responds to and mitigates cyber threats', score: 6 },
+        { id: 11, name: 'Vulnerability Researcher Y', description: 'Finds and reports vulnerabilities', score: 4 },
     ];
 
     const filteredActors = actors
@@ -109,7 +109,7 @@ export default function TopActors() {
     };
 
     return (
-        <div className='flex gap-2 justify-between items-center'>
+        <div className='flex gap-2 justify-between items-center mb-10'>
             <div className="md:w-1/3 p-4" >
                 <h1 className="text-3xl font-bold text-white mb-4">Top Threat Actors</h1>
                 <p className="text-lg text-gray-300 mb-2">
