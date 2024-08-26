@@ -48,7 +48,7 @@ export default function Component() {
           </div>
         </div>
       </div>
-      <div className="mt-2 border-t border-border text-center text-xs text-muted-foreground">
+      <div className="mt-4 border-t border-border text-center text-xs text-muted-foreground">
         &copy; 2024 Cyber Intel. All rights reserved.
       </div>
     </footer>
