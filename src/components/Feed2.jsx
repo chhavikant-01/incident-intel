@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
@@ -18,7 +18,7 @@ const generateRandomPost = (id) => {
     post_desc: `A sophisticated cyber attack has been detected targeting organizations in the ${sectors[Math.floor(Math.random() * sectors.length)]} sector. The attack involves ${threats[Math.floor(Math.random() * threats.length)].toLowerCase()} techniques and has already affected multiple entities.`,
     internal_created_at: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString(),
     author: authors[Math.floor(Math.random() * authors.length)],
-    post_url: `http://localhost:3001/post/${id}`,
+    post_url: `${process.env.REACT_APP_BASE_URL}/post/${id}`,
     post_tags: [threats[Math.floor(Math.random() * threats.length)], sectors[Math.floor(Math.random() * sectors.length)], 'cybersecurity'],
     mentions: [`Organization ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`, `Entity ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`],
     country_tag: countries[Math.floor(Math.random() * countries.length)]
@@ -26,6 +26,8 @@ const generateRandomPost = (id) => {
 }
 
 export default function Feed2() {
+
+
   const [posts, setPosts] = useState(() => Array.from({ length: 5 }, (_, i) => generateRandomPost(i + 1)))
 
   const loadMore = () => {
@@ -47,7 +49,7 @@ export default function Feed2() {
             </div>
 
             {posts.map((post) => (
-              <Card key={post.post_id} className="mb-6 bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e]">
+              <Card key={post.post_id} className="mb-6 bg-[#18181b]">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl font-bold">{post.post_title}</CardTitle>
@@ -89,8 +91,8 @@ export default function Feed2() {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                  <Button variant="outline" asChild>
-                    <a href={post.post_url} rel="noopener noreferrer">
+                  <Button variant="outline" className="bg-white text-black hover:bg-slate-200 hover:text-black" asChild>
+                    <a href={post.post_url} rel="noopener noreferrer" target='_blank'>
                       <LinkIcon className="w-4 h-4 mr-2" />
                       View Details
                     </a>
