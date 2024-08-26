@@ -1,4 +1,4 @@
-// Discard it if its not needed | Card with different threat can be sorted based of scores
+// Discard it if its not needed | Card with different threat can be sorted based of scores | verified or unverified 
 
 "use client";
 
