@@ -12,7 +12,7 @@ import Verified from './components/Verified';
 
 function App() {
   return (
-    // <ThemeProvider>
+    <ThemeProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -24,7 +24,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    // </ThemeProvider>
+    </ThemeProvider>
   );
 }
 
