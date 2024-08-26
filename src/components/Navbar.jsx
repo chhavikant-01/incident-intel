@@ -7,8 +7,7 @@ export default function Navbar() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Incidents', href: '/incidents' },
-    { name: 'Report', href: '/report' },
-    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Threat Actors', href: '/threat-actors' },
   ]
 
   return (
@@ -24,8 +23,13 @@ export default function Navbar() {
           whileTap={{ scale: 0.9 }}
           className="flex items-center space-x-2"
         >
+        <Link to={"/"}
+            className="flex items-center space-x-2"
+        >
+
           <ShieldAlert className="h-8 w-8 text-blue-400" />
           <span className="text-xl font-bold">Incident Intel</span>
+        </Link>
         </motion.div>
         <ul className="flex space-x-6">
           {navItems.map((item) => (

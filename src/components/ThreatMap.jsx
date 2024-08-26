@@ -78,7 +78,7 @@ const categoryColors = {
 
 const ThreatMap = () => {
   return (
-    <div className='flex gap-2 justify-between items-center'>
+    <div className='mt-10 flex gap-2 justify-between items-center'>
       {/* Left side content */}
       <motion.div
         className="md:w-1/3 p-4"
@@ -96,7 +96,7 @@ const ThreatMap = () => {
       </motion.div>
 
       {/* Right side map */}
-      <Card className="w-2/3 mx-auto bg-gray-800 rounded-lg shadow-lg">
+      <Card className="w-2/3 mx-auto bg-[#020817] rounded-lg shadow-lg">
         <CardContent>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

@@ -7,6 +7,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Feed2 from './components/Feed2';
 import Post from './components/Post';
 import Analytics from './pages/Analytics';
+import ThreatActors from './pages/ThreatActors';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/incidents' element={<Feed2 />} />
             <Route path="/report" element={<ReportWithDatePicker />} />
             <Route path="/post/:postId" element={<Post />} />
+            <Route path="/threat-actors" element={<ThreatActors />} />
 
           </Route>
         </Routes>

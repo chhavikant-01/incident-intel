@@ -32,12 +32,12 @@ const Analytics = () => {
       </AnimatedComponent>
 
       {/* Animated Incident Bar Chart */}
-      <AnimatedComponent delay={0.3}>
+      <AnimatedComponent delay={0.2}>
         <IncidentBarChart />
       </AnimatedComponent>
 
       {/* Animated Pie Chart */}
-      <AnimatedComponent delay={0.3}>
+      <AnimatedComponent delay={0.2}>
         <PieChartSeverity />
       </AnimatedComponent>
     </div>

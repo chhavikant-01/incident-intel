@@ -18,11 +18,11 @@ export default function PieChartSeverity() {
     <div className="md:w-1/3 p-4">
   <h1 className="text-3xl font-bold text-white mb-4">Severity Breakdown of Cyber Threat Incidents</h1>
   <p className="text-lg text-gray-300 mb-2">
-  This chart provides an overview of the distribution of cyber threat incidents categorized by severity. The severity levels are classified into three categories: Low, Medium, and High. The Low severity incidents are the most common, reflecting threats that are less impactful but still present. Medium severity incidents represent a moderate level of threat, with a higher impact on affected systems. The High severity incidents are the most critical, indicating severe threats that require immediate attention and remediation. This breakdown helps in understanding the overall threat landscape and prioritizing responses based on the intensity of the incidents.
+  This chart provides an overview of the distribution of cyber threat incidents categorized by severity. The severity levels are classified into three categories: Low, Medium, and High. 
 
   </p>
   <p className="text-lg text-gray-300">
-    Analyze the chart to identify which types of threats are most prevalent. This can help in understanding the landscape of cyber threats and prioritizing security measures accordingly.
+  The Low severity incidents are the most common, reflecting threats that are less impactful but still present. Medium severity incidents represent a moderate level of threat, with a higher impact on affected systems. The High severity incidents are the most critical, indicating severe threats that require immediate attention and remediation.
   </p>
 </div>
 
@@ -50,7 +50,7 @@ export default function PieChartSeverity() {
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: '#333',
+                backgroundColor: '#fff',
                 border: 'none',
                 borderRadius: '4px',
                 color: 'white',
