@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import ThreatMap from '../components/ThreatMap';
 import IncidentBarChart from '../components/BarChart';
 import PieChartSeverity from '../components/PieChart';
+import TopActors from '../components/TopActors';
 
 const AnimatedComponent = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({
@@ -39,6 +40,11 @@ const Analytics = () => {
       {/* Animated Pie Chart */}
       <AnimatedComponent delay={0.2}>
         <PieChartSeverity />
+      </AnimatedComponent>
+
+      {/* Animated Threat Actors */}
+      <AnimatedComponent delay={0.2}>
+        <TopActors />
       </AnimatedComponent>
     </div>
   );
