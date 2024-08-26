@@ -5,6 +5,7 @@ import {
     Geography,
     Marker,
 } from 'react-simple-maps';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 
 const malwareThreats = [
@@ -76,10 +77,15 @@ const categoryColors = {
 };
 
 const ThreatMap = () => {
-
-    return (
+  return (
     <div className='flex gap-2 justify-between items-center'>
-      <div className="md:w-1/3 p-4 ">
+      {/* Left side content */}
+      <motion.div
+        className="md:w-1/3 p-4"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <h1 className="text-3xl font-bold text-white mb-4">Global Cyber Threat Incidents</h1>
         <p className="text-lg text-gray-300 mb-2">
           This visualization showcases the distribution and intensity of cyber threat incidents across the globe. The size of each circle reflects the intensity of an incident, while the color indicates the category of the threat.
@@ -87,50 +93,55 @@ const ThreatMap = () => {
         <p className="text-lg text-gray-300">
           Navigate through the map to explore how different types of cyber threats are spread worldwide. Each threat category is uniquely color-coded for clarity.
         </p>
-      </div>
+      </motion.div>
 
-      <Card className="w-3/4 mx-auto">
-      <CardContent>
-      <ComposableMap style={{ width: "100%", height: "600px" }}>
-          <Geographies geography="/feature.json">
-              {({ geographies }) => {
-                  
-                  return geographies.map(geo => (
-                      <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          style={{
-                              default: { fill: "#D6D6DA", outline: "none" },
-                              hover: { fill: "#007acc", outline: "none" },
-                              pressed: { fill: "#E42", outline: "none" },
-                          }}
-                      />
-                  ));
-              }}
-          </Geographies>
-          {malwareThreats.map((threat, index) => (
-              <Marker key={index} coordinates={[threat.longitude, threat.latitude]}>
-                  <circle 
-                  r={Math.log(threat.intensity) * 5} 
-                  fill={categoryColors[threat.category]}
-                  stroke='#FFF'
-                  strokeWidth={1}
+      {/* Right side map */}
+      <Card className="w-2/3 mx-auto bg-gray-800 rounded-lg shadow-lg">
+        <CardContent>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <ComposableMap style={{ width: '100%', height: '600px' }}>
+              <Geographies geography="/feature.json">
+                {({ geographies }) =>
+                  geographies.map(geo => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      style={{
+                        default: { fill: "#D6D6DA", outline: "none" },
+                        hover: { fill: "#007acc", outline: "none" },
+                        pressed: { fill: "#E42", outline: "none" },
+                      }}
+                    />
+                  ))
+                }
+              </Geographies>
+              {malwareThreats.map((threat, index) => (
+                <Marker key={index} coordinates={[threat.longitude, threat.latitude]}>
+                  <circle
+                    r={Math.log(threat.intensity) * 5}
+                    fill={categoryColors[threat.category]}
+                    stroke='#FFF'
+                    strokeWidth={1}
                   />
-              </Marker>
-          ))}
-      </ComposableMap>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-              {Object.keys(categoryColors).map((category, index) => (
-                  <div key={index} className="flex items-center">
-                      <div className="w-4 h-4 rounded-full mr-2" style={{ backgroundColor: categoryColors[category] }}></div>
-                      <span>{category}</span>
-                  </div>
+                </Marker>
               ))}
-          </div>
-      </CardContent>
+            </ComposableMap>
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+              {Object.keys(categoryColors).map((category, index) => (
+                <div key={index} className="flex items-center">
+                  <div className="w-4 h-4 rounded-full mr-2" style={{ backgroundColor: categoryColors[category] }}></div>
+                  <span className="text-white">{category}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </CardContent>
       </Card>
     </div>
-    
   );
 };
 
