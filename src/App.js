@@ -7,7 +7,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Feed2 from './components/Feed2';
 import Post from './components/Post';
 import Analytics from './pages/Analytics';
-import ThreatActors from './pages/ThreatActors';
+import TopActors from './components/TopActors';
 import Verified from './components/Verified';
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
             <Route path='/incidents' element={<Feed2 />} />
             <Route path="/report" element={<ReportWithDatePicker />} />
             <Route path="/post/:postId" element={<Post />} />
+            <Route path="/t" element={<TopActors />} />
           </Route>
         </Routes>
       </BrowserRouter>
