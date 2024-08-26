@@ -62,11 +62,11 @@ export default function Post() {
       <header className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] text-white py-6 sticky top-0 z-50">
         <div className="container mx-auto px-4">
             <Link
-                to={'/'}
+                to={'/incidents'}
             >
           <Button variant="outline" className="mb-4 text-white">
             <ArrowLeftIcon className="w-4 h-4 mr-2" />
-            Back to Dashboard
+            Back to Incidents
           </Button>
             </Link>
           <h1 className="text-3xl font-bold mb-2">{incidentData.title}</h1>
@@ -88,7 +88,7 @@ export default function Post() {
 
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
-          <Card>
+          <Card className="bg-[#18181b]">
             <CardHeader>
               <CardTitle>Incident Overview</CardTitle>
             </CardHeader>
@@ -126,7 +126,7 @@ export default function Post() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-[#18181b]">
             <CardHeader>
               <CardTitle>Technical Details</CardTitle>
             </CardHeader>
@@ -170,7 +170,7 @@ export default function Post() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-[#18181b]">
             <CardHeader>
               <CardTitle>Impact Assessment & Mitigation</CardTitle>
             </CardHeader>
@@ -186,7 +186,7 @@ export default function Post() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-[#18181b]">
             <CardHeader>
               <CardTitle>References & Additional Resources</CardTitle>
             </CardHeader>
@@ -204,7 +204,7 @@ export default function Post() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-[#18181b]">
             <CardHeader>
               <CardTitle>Related Incidents</CardTitle>
             </CardHeader>

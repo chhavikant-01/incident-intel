@@ -1,9 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-[#000036] via-[#050576] to-[#000036]">
+    <div className="min-h-screen flex flex-col bg-[#09090b]">
+        <Navbar />
         <Outlet /> 
     </div>
   );

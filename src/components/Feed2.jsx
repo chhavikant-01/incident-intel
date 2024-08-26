@@ -47,7 +47,7 @@ export default function Feed2() {
             </div>
 
             {posts.map((post) => (
-              <Card key={post.post_id} className="mb-6 bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e]">
+              <Card key={post.post_id} className="mb-6 bg-[#18181b]">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl font-bold">{post.post_title}</CardTitle>
@@ -89,7 +89,7 @@ export default function Feed2() {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                  <Button variant="outline" asChild>
+                  <Button variant="outline" className="bg-white text-black hover:bg-slate-200 hover:text-black" asChild>
                     <a href={post.post_url} rel="noopener noreferrer">
                       <LinkIcon className="w-4 h-4 mr-2" />
                       View Details
