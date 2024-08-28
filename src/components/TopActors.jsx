@@ -1,21 +1,6 @@
-// Top actors input will be taken from Database | Part of Dashboard
 import { useState } from 'react';
 import { SortAscendingIcon, SortDescendingIcon } from '@heroicons/react/outline';
-
-// Dummy Data
-const actors = [
-    { id: 11, name: 'Vulnerability Researcher Y', description: 'Finds and reports vulnerabilities', score: 4 },
-    { id: 1, name: 'APT29', description: 'Russian state-sponsored hacking group', score: -2 },
-    { id: 7, name: 'Threat Intel Org A', description: 'Provides valuable threat intelligence', score: 11 },
-    { id: 3, name: 'FIN7', description: 'Cybercriminal group targeting financial institutions', score: 3 },
-    { id: 4, name: 'Fancy Bear', description: 'Russian state-sponsored hacking group', score: 5 },
-    { id: 5, name: 'Cozy Bear', description: 'Russian state-sponsored hacking group', score: 7 },
-    { id: 10, name: 'Incident Response Team', description: 'Responds to and mitigates cyber threats', score: 6 },
-    { id: 6, name: 'Sandworm', description: 'Russian state-sponsored hacking group', score: 9 },
-    { id: 8, name: 'Cybersecurity Inc.', description: 'Offers advanced security solutions', score: 13 },
-    { id: 9, name: 'Security Researcher X', description: 'Researches and reports on new threats', score: 15 },
-    { id: 2, name: 'Lazarus Group', description: 'North Korean state-sponsored hacking group', score: 1 },
-];
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 // Icon components
 function SkullIcon(props) {
@@ -87,10 +72,24 @@ function FlameIcon(props) {
     );
 }
 
-// TopActors component
 export default function TopActors() {
     const [filter, setFilter] = useState('all');
     const [sortOrder, setSortOrder] = useState('desc');
+
+    // Data to be replaced with real DB data
+    const actors = [
+        { id: 1, name: 'APT29', description: 'Russian state-sponsored hacking group', score: -2 },
+        { id: 2, name: 'Lazarus Group', description: 'North Korean state-sponsored hacking group', score: 1 },
+        { id: 3, name: 'FIN7', description: 'Cybercriminal group targeting financial institutions', score: 3 },
+        { id: 4, name: 'Fancy Bear', description: 'Russian state-sponsored hacking group', score: 5 },
+        { id: 5, name: 'Cozy Bear', description: 'Russian state-sponsored hacking group', score: 7 },
+        { id: 6, name: 'Sandworm', description: 'Russian state-sponsored hacking group', score: 9 },
+        { id: 7, name: 'Threat Intel Org A', description: 'Provides valuable threat intelligence', score: 11 },
+        { id: 8, name: 'Cybersecurity Inc.', description: 'Offers advanced security solutions', score: 13 },
+        { id: 9, name: 'Security Researcher X', description: 'Researches and reports on new threats', score: 15 },
+        { id: 10, name: 'Incident Response Team', description: 'Responds to and mitigates cyber threats', score: 6 },
+        { id: 11, name: 'Vulnerability Researcher Y', description: 'Finds and reports vulnerabilities', score: 4 },
+    ];
 
     const filteredActors = actors
         .filter(actor => (filter === 'good' ? actor.score > 7 : filter === 'bad' ? actor.score <= 7 : true))
@@ -110,67 +109,77 @@ export default function TopActors() {
     };
 
     return (
-        <section className="w-1/2 py-12 md:py-16 lg:py-10">
-            <div className="container px-4 md:px-6">
-                <div className="mb-3 md:mb-3 lg:mb-5">
-                    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                        Top Threat Actors
-                    </h2>
-                    <div className="mt-4">
-                        <button
-                            onClick={() => setFilter('good')}
-                            className={`px-4 py-2 mr-2 mx-2 rounded-2xl ${filter === 'good' ? 'bg-primary text-primary-foreground' : 'bg-gray-200'}`}
-                        >
-                            Good Actors
-                        </button>
-                        <button
-                            onClick={() => setFilter('bad')}
-                            className={`px-4 py-2 mx-2 rounded-2xl ${filter === 'bad' ? 'bg-primary text-primary-foreground' : 'bg-gray-200'}`}
-                        >
-                            Bad Actors
-                        </button>
-                        <button
-                            onClick={() => setFilter('all')}
-                            className={`px-4 py-2 mx-2 rounded-2xl ${filter === 'all' ? 'bg-primary text-primary-foreground' : 'bg-gray-200'}`}
-                        >
-                            All Actors
-                        </button>
-                        <button
-                            onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                            className="ml-2 px-4 py-2 rounded-2xl bg-gray-200"
-                        >
-                            {sortOrder === 'asc' ? <SortAscendingIcon className="w-5 h-5 inline" /> : <SortDescendingIcon className="w-5 h-5 inline" />}
-                        </button>
-                    </div>
-                </div>
-                <div className="">
-                    <div className="flex flex-col space-y-6">
-                        {filteredActors.map(actor => {
-                            const Icon = getIcon(actor.score);
-                            return (
-                                <div key={actor.id} className="flex items-center gap-4 p-4 bg-card rounded-lg shadow-sm transition-all duration-300 hover:shadow-lg">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                                        <Icon className="h-6 w-6" />
-                                    </div>
-                                    <div className="flex-1 flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-lg font-semibold">{actor.name}</h3>
-                                            <p className="text-sm text-muted-foreground">
-                                                {actor.description}
-                                            </p>
-                                        </div>
-                                        <div
-                                            className={`px-2 py-1 rounded-full text-xs font-medium ${getScoreColor(actor.score)}`}
-                                        >
-                                            Score: {actor.score}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
+        <div className='flex gap-2 justify-between items-center mb-10'>
+            <div className="md:w-1/3 p-4" >
+                <h1 className="text-3xl font-bold text-white mb-4">Top Threat Actors</h1>
+                <p className="text-lg text-gray-300 mb-2">
+                    This section provides insights into the most significant threat actors, categorized by their impact levels. The threat actors are filtered based on their scores and can be sorted in ascending or descending order.
+                </p>
+                <p className="text-lg text-gray-300">
+                    Use the buttons to filter and sort the threat actors by their scores. High-score actors represent more severe threats, while low-score actors are less impactful.
+                </p>
             </div>
-        </section>
-    );
+    
+            <Card className="w-full max-w-3xl bg-[#020817] text-white">
+                <CardHeader>
+                    <CardTitle className="text-2xl font-bold">Threat Actor List</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="mt-4">
+                        <div className="flex flex-wrap justify-start">
+                            <button
+                                onClick={() => setFilter('good')}
+                                className={`px-4 py-2 mr-2 rounded-2xl ${filter === 'good' ? 'bg-green-500 text-white' : 'bg-gray-200 text-black'}`}
+                            >
+                                Good Actors
+                            </button>
+                            <button
+                                onClick={() => setFilter('bad')}
+                                className={`px-4 py-2 mr-2 rounded-2xl ${filter === 'bad' ? 'bg-red-500 text-white' : 'bg-gray-200 text-black'}`}
+                            >
+                                Bad Actors
+                            </button>
+                            <button
+                                onClick={() => setFilter('all')}
+                                className={`px-4 py-2 mr-2 rounded-2xl ${filter === 'all' ? 'bg-blue-400 text-white' : 'bg-gray-200 text-black'}`}
+                            >
+                                All Actors
+                            </button>
+                            <button
+                                onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                                className="ml-2 px-4 py-2 rounded-2xl bg-gray-200 text-black"
+                            >
+                                {sortOrder === 'asc' ? <SortAscendingIcon className="w-5 h-5 inline" /> : <SortDescendingIcon className="w-5 h-5 inline" />}
+                            </button>
+                        </div>
+                    </div>
+                    <div className="h-[350px] mt-6 overflow-y-auto p-4">
+                        <div className="flex flex-col space-y-6">
+                            {filteredActors.map(actor => {
+                                const Icon = getIcon(actor.score);
+                                return (
+                                    <div key={actor.id} className="flex items-center gap-4 bg-card rounded-lg shadow-sm transition-all duration-300 hover:shadow-lg">
+                                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                                            <Icon className="h-6 w-6" />
+                                        </div>
+                                        <div className="flex-1 flex items-center justify-between">
+                                            <div>
+                                                <h3 className="text-lg font-semibold">{actor.name}</h3>
+                                                <p className="text-sm text-muted-foreground">
+                                                    {actor.description}
+                                                </p>
+                                            </div>
+                                            <div className={`px-2 py-1 rounded-full text-xs font-medium ${getScoreColor(actor.score)}`}>
+                                                Score: {actor.score}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+    );    
 }
