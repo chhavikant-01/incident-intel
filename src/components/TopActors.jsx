@@ -110,15 +110,6 @@ export default function TopActors() {
 
     return (
         <div className='flex gap-2 justify-between items-center mb-10'>
-            <div className="md:w-1/3 p-4" >
-                <h1 className="text-3xl font-bold text-white mb-4">Top Threat Actors</h1>
-                <p className="text-lg text-gray-300 mb-2">
-                    This section provides insights into the most significant threat actors, categorized by their impact levels. The threat actors are filtered based on their scores and can be sorted in ascending or descending order.
-                </p>
-                <p className="text-lg text-gray-300">
-                    Use the buttons to filter and sort the threat actors by their scores. High-score actors represent more severe threats, while low-score actors are less impactful.
-                </p>
-            </div>
     
             <Card className="w-full max-w-3xl bg-[#020817] text-white">
                 <CardHeader>
@@ -180,6 +171,15 @@ export default function TopActors() {
                     </div>
                 </CardContent>
             </Card>
+            <div className="md:w-1/3 p-4" >
+                <h1 className="text-3xl font-bold text-white mb-4">Top Threat Actors</h1>
+                <p className="text-lg text-gray-300 mb-2">
+                    This section provides insights into the most significant threat actors, categorized by their impact levels. The threat actors are filtered based on their scores and can be sorted in ascending or descending order.
+                </p>
+                <p className="text-lg text-gray-300">
+                    Use the buttons to filter and sort the threat actors by their scores. High-score actors represent more severe threats, while low-score actors are less impactful.
+                </p>
+            </div>
         </div>
     );    
 }
