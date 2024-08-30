@@ -16,7 +16,7 @@ export default function Footer() {
       </div>
       
       <div className="mt-4 border-t border-border text-center text-xs text-muted-foreground">
-        &copy; 2024 Incident Intel. All rights reserved. | <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link> | <Link to="/terms-of-service" className="hover:underline">Terms of Service</Link>
+        &copy; 2024 Incidents Intel. All rights reserved. | <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link> | <Link to="/terms-of-service" className="hover:underline">Terms of Service</Link>
       </div>
     </footer>
   )
