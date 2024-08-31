@@ -174,16 +174,7 @@ export default function Feed2() {
                       <Badge key={index} variant="secondary">{tag}</Badge>
                     ))}
                   </div>
-                  {post.mentions.length > 0 && (
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold mb-2">Mentions:</h4>
-                      <ul className="list-disc list-inside">
-                        {post.mentions.map((mention, index) => (
-                          <li key={index} className="text-sm">{mention}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+
                   <div className="flex items-center mb-4">
                     <MapPinIcon className="w-4 h-4 mr-2" />
                     <span className="text-sm">

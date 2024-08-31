@@ -135,26 +135,8 @@ export default function Post() {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-2">File Types</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {incidentData.technicalDetails.fileTypes.map((type, index) => (
-                      <Badge key={index} variant="outline">
-                        <FileTextIcon className="w-4 h-4 mr-1" />
-                        {type}
-                      </Badge>
-                    ))}
-                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Network Indicators</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {incidentData.technicalDetails.networkIndicators.map((indicator, index) => (
-                      <Badge key={index} variant="outline">
-                        <GlobeIcon className="w-4 h-4 mr-1" />
-                        {indicator}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
+
               </div>
               <div className="mt-4">
                 <h3 className="font-semibold mb-2">Encryption Method</h3>
