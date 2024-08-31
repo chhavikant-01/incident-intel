@@ -5,6 +5,7 @@ import ThreatMap from '../components/ThreatMap';
 import IncidentBarChart from '../components/BarChart';
 import PieChartSeverity from '../components/PieChart';
 import TopActors from '../components/TopActors';
+import Footer from '../components/Footer';
 
 const AnimatedComponent = ({ children, delay = 0 }) => {
   const { ref, inView } = useInView({
@@ -26,6 +27,8 @@ const AnimatedComponent = ({ children, delay = 0 }) => {
 
 const Analytics = () => {
   return (
+    <>
+
     <div className='flex flex-col gap-10'>
       {/* Animated Threat Map */}
       <AnimatedComponent delay={0}>
@@ -47,6 +50,8 @@ const Analytics = () => {
         <TopActors />
       </AnimatedComponent>
     </div>
+    <Footer />
+    </>
   );
 };
 

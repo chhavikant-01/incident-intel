@@ -4,36 +4,40 @@ import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { AlertTriangleIcon, ClockIcon, FilterIcon, GlobeIcon, LinkIcon, MapPinIcon, SearchIcon, UserIcon } from "lucide-react"
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
-const generateRandomPost = (id) => {
-  const threats = ['Ransomware', 'Phishing', 'DDoS', 'Data Breach', 'Malware']
-  const sectors = ['Healthcare', 'Finance', 'Education', 'Government', 'Retail']
-  const countries = ['USA', 'UK', 'Canada', 'Australia', 'Germany', 'Japan']
-  const authors = ['CyberSec Analyst', 'Threat Hunter', 'Security Researcher', 'Incident Responder']
+// const generateRandomPost = (id) => {
+//   const threats = ['Ransomware', 'Phishing', 'DDoS', 'Data Breach', 'Malware']
+//   const sectors = ['Healthcare', 'Finance', 'Education', 'Government', 'Retail']
+//   const countries = ['USA', 'UK', 'Canada', 'Australia', 'Germany', 'Japan']
+//   const authors = ['CyberSec Analyst', 'Threat Hunter', 'Security Researcher', 'Incident Responder']
 
-  return {
-    post_id: `${id}`,
-    post_title: `${threats[Math.floor(Math.random() * threats.length)]} Attack Targeting ${sectors[Math.floor(Math.random() * sectors.length)]} Sector`,
-    post_desc: `A sophisticated cyber attack has been detected targeting organizations in the ${sectors[Math.floor(Math.random() * sectors.length)]} sector. The attack involves ${threats[Math.floor(Math.random() * threats.length)].toLowerCase()} techniques and has already affected multiple entities.`,
-    internal_created_at: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString(),
-    author: authors[Math.floor(Math.random() * authors.length)],
-    post_url: `${process.env.REACT_APP_BASE_URL}/post/${id}`,
-    post_tags: [threats[Math.floor(Math.random() * threats.length)], sectors[Math.floor(Math.random() * sectors.length)], 'cybersecurity'],
-    mentions: [`Organization ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`, `Entity ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`],
-    country_tag: countries[Math.floor(Math.random() * countries.length)]
-  }
-}
+//   return {
+//     post_id: `${id}`,
+//     title: `${threats[Math.floor(Math.random() * threats.length)]} Attack Targeting ${sectors[Math.floor(Math.random() * sectors.length)]} Sector`,
+//     description: `A sophisticated cyber attack has been detected targeting organizations in the ${sectors[Math.floor(Math.random() * sectors.length)]} sector. The attack involves ${threats[Math.floor(Math.random() * threats.length)].toLowerCase()} techniques and has already affected multiple entities.`,
+//     createdAt: new Date(Date.now() - Math.floor(Math.random() * 10000000000)).toISOString(),
+//     author: authors[Math.floor(Math.random() * authors.length)],
+//     post_url: `${process.env.REACT_APP_BASE_URL}/post/${id}`,
+//     tags: [threats[Math.floor(Math.random() * threats.length)], sectors[Math.floor(Math.random() * sectors.length)], 'cybersecurity'],
+//     mentions: [`Organization ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`, `Entity ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}`],
+//     countries: countries[Math.floor(Math.random() * countries.length)]
+//   }
+// }
 
 export default function Feed2() {
+  
+  const posts = useSelector((state) => state.posts.posts);
 
 
-  const [posts, setPosts] = useState(() => Array.from({ length: 5 }, (_, i) => generateRandomPost(i + 1)))
+  // const [posts, setPosts] = useState(() => Array.from({ length: 5 }, (_, i) => generateRandomPost(i + 1)))
 
-  const loadMore = () => {
-    const newPosts = Array.from({ length: 3 }, (_, i) => generateRandomPost(posts.length + i + 1))
-    setPosts([...posts, ...newPosts])
-  }
+  // const loadMore = () => {
+  //   const newPosts = Array.from({ length: 3 }, (_, i) => generateRandomPost(posts.length + i + 1))
+  //   setPosts([...posts, ...newPosts])
+  // }
 
   return (
     <div className="min-h-screen bg-transparent">
@@ -49,10 +53,10 @@ export default function Feed2() {
             </div>
 
             {posts.map((post) => (
-              <Card key={post.post_id} className="mb-6 bg-[#18181b]">
+              <Card key={post._id} className="mb-6 bg-[#18181b]">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl font-bold">{post.post_title}</CardTitle>
+                    <CardTitle className="text-xl font-bold">{post.title}</CardTitle>
                     <Badge variant="destructive" className="text-xs">
                       <AlertTriangleIcon className="w-3 h-3 mr-1" />
                       Cyber Threat
@@ -62,48 +66,34 @@ export default function Feed2() {
                     <UserIcon className="w-4 h-4 mr-1" />
                     {post.author}
                     <ClockIcon className="w-4 h-4 ml-4 mr-1" />
-                    {new Date(post.internal_created_at).toLocaleDateString()}
+                    {new Date(post.createdAt).toLocaleDateString()}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-base mb-4">{post.post_desc}</p>
+                  <p className="text-base mb-4">{post.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {post.post_tags.map((tag, index) => (
+                    {post?.tags?.map((tag, index) => (
                       <Badge key={index} variant="secondary">{tag}</Badge>
                     ))}
                   </div>
-                  {post.mentions.length > 0 && (
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold mb-2">Mentions:</h4>
-                      <ul className="list-disc list-inside">
-                        {post.mentions.map((mention, index) => (
-                          <li key={index} className="text-sm">{mention}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                   <div className="flex items-center mb-4">
                     <MapPinIcon className="w-4 h-4 mr-2" />
                     <span className="text-sm">
                       Location:
                     </span>
-                    <Badge className="ml-2" variant="outline">{post.country_tag}</Badge>
+                    <Badge className="ml-2" variant="outline">{post.countries}</Badge>
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                   <Button variant="outline" className="bg-white text-black hover:bg-slate-200 hover:text-black" asChild>
-                    <a href={post.post_url} rel="noopener noreferrer" target='_blank'>
+                    <Link to={`/post/${post._id}`}>
                       <LinkIcon className="w-4 h-4 mr-2" />
                       View Details
-                    </a>
+                    </Link>
                   </Button>
                 </CardFooter>
               </Card>
             ))}
-
-            <div className="mt-6 text-center">
-              <Button onClick={loadMore}>Load More Incidents</Button>
-            </div>
           </div>
 
           <div className="w-full md:w-1/4 fixed right-0">

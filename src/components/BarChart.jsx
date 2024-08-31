@@ -61,11 +61,11 @@ export default function IncidentBarChart() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-4 flex items-center">
+        {/* <div className="mt-4 flex items-center">
         <ArrowUpIcon className="text-green-500 mr-2" />
         <span className="font-bold mr-2">Trending up by 5.2% this month</span>
       </div>
-      <p className="text-gray-400 text-sm">Showing total incidents for the last 6 months</p>
+      <p className="text-gray-400 text-sm">Showing total incidents for the last 6 months</p> */}
       </CardContent>
     </Card>
     

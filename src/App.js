@@ -10,8 +10,22 @@ import Analytics from "./pages/Analytics";
 import TopActors from "./components/TopActors";
 import Verified from "./components/Verified";
 import Footer from "./components/Footer";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "./redux/posts/postThunks.js";
+
 
 function App() {
+    // Loading posts from the server to the Redux store
+    const dispatch = useDispatch();
+    const status = useSelector((state) => state.posts.status);
+    const error = useSelector((state) => state.posts.error);
+  
+    useEffect(() => {
+      if (status === 'idle') {
+        dispatch(fetchPosts());
+      }
+    }, [dispatch, status]);
   return (
     <ThemeProvider>
       <BrowserRouter>
@@ -24,7 +38,6 @@ function App() {
             <Route path="/t" element={<TopActors />} />
           </Route>
         </Routes>
-        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
