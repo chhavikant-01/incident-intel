@@ -24,7 +24,7 @@ function App() {
             <Route path="/t" element={<TopActors />} />
           </Route>
         </Routes>
-        <Footer />
+    
       </BrowserRouter>
     </ThemeProvider>
   );

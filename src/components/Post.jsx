@@ -4,6 +4,7 @@ import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { Link } from 'react-router-dom'
 import { AlertTriangleIcon, ArrowLeftIcon, CalendarIcon, ClockIcon, FileTextIcon, GlobeIcon, LinkIcon, MapPinIcon, ShieldIcon, UserIcon } from "lucide-react"
+import Footer from './Footer'
 
 // Note: In a real application, you would fetch this data from an API
 const incidentData = {
@@ -215,19 +216,7 @@ export default function Post() {
         </div>
       </main>
 
-      <footer className="bg-muted py-6 mt-8">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>Incident ID: {incidentData.id}</p>
-          <p>
-            <UserIcon className="w-4 h-4 inline mr-1" />
-            Reported by: {incidentData.author}
-          </p>
-          <p>
-            <CalendarIcon className="w-4 h-4 inline mr-1" />
-            Created: {new Date(incidentData.createdAt).toLocaleString()}
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import ThreatMap from '../components/ThreatMap';
 import IncidentBarChart from '../components/BarChart';
 import PieChartSeverity from '../components/PieChart';
+import Footer from '../components/Footer';
 import TopActors from '../components/TopActors';
 
 const AnimatedComponent = ({ children, delay = 0 }) => {
@@ -26,6 +27,8 @@ const AnimatedComponent = ({ children, delay = 0 }) => {
 
 const Analytics = () => {
   return (
+    <>
+
     <div className='flex flex-col gap-10'>
       {/* Animated Threat Map */}
       <AnimatedComponent delay={0}>
@@ -42,11 +45,13 @@ const Analytics = () => {
         <PieChartSeverity />
       </AnimatedComponent>
 
-      {/* Animated Threat Actors */}
+      {/* Animated Pie Chart */}
       <AnimatedComponent delay={0.2}>
         <TopActors />
       </AnimatedComponent>
     </div>
+    <Footer />
+    </>
   );
 };
 

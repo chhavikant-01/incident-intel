@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
+import { ResponsiveBump } from '@nivo/bump'
 import { Input } from "./ui/input"
 import { AlertTriangleIcon, ClockIcon, FilterIcon, GlobeIcon, LinkIcon, MapPinIcon, SearchIcon, UserIcon } from "lucide-react"
 
@@ -24,7 +25,48 @@ const generateRandomPost = (id) => {
     country_tag: countries[Math.floor(Math.random() * countries.length)]
   }
 }
-
+const bumpData = [
+  {
+    "id": "Viruses",
+    "data": [
+      { "x": 1, "y": 3 },
+      { "x": 2, "y": 1 },
+      { "x": 3, "y": 2 },
+      { "x": 4, "y": 4 },
+      { "x": 5, "y": 3 }
+    ]
+  },
+  {
+    "id": "Worms",
+    "data": [
+      { "x": 1, "y": 2 },
+      { "x": 2, "y": 3 },
+      { "x": 3, "y": 1 },
+      { "x": 4, "y": 2 },
+      { "x": 5, "y": 1 }
+    ]
+  },
+  {
+    "id": "Ransomware",
+    "data": [
+      { "x": 1, "y": 1 },
+      { "x": 2, "y": 2 },
+      { "x": 3, "y": 3 },
+      { "x": 4, "y": 1 },
+      { "x": 5, "y": 2 }
+    ]
+  },
+  {
+    "id": "Bots",
+    "data": [
+      { "x": 1, "y": 4 },
+      { "x": 2, "y": 4 },
+      { "x": 3, "y": 4 },
+      { "x": 4, "y": 3 },
+      { "x": 5, "y": 4 }
+    ]
+  }
+]
 export default function Feed2() {
 
 
@@ -40,6 +82,66 @@ export default function Feed2() {
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-3/4">
+            <div>
+            <Card className="mb-8 bg-[#020817] border-0 text-white">
+            <CardHeader>
+              <CardTitle>Malware Incidents Trend</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div style={{ height: '400px' }}>
+                <ResponsiveBump
+                  data={bumpData}
+                  colors={{ scheme: 'category10' }}
+                  lineWidth={3}
+                  theme={
+                    {
+                      "background": "#020817",
+                      "text": {
+                        "fill": "#ffffff"
+                      }
+                    }
+                  }
+                  activeLineWidth={6}
+                  inactiveLineWidth={3}
+                  inactiveOpacity={0.15}
+                  pointSize={10}
+                  activePointSize={16}
+                  inactivePointSize={0}
+                  pointColor={{ theme: 'background' }}
+                  pointBorderWidth={3}
+                  activePointBorderWidth={3}
+                  pointBorderColor={{ from: 'serie.color' }}
+                  axisTop={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: '',
+                    legendPosition: 'middle',
+                    legendOffset: -36
+                  }}
+                  axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: '',
+                    legendPosition: 'middle',
+                    legendOffset: 32
+                  }}
+                  axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: 'ranking',
+                    legendPosition: 'middle',
+                    legendOffset: -40
+                  }}
+                  margin={{ top: 40, right: 100, bottom: 40, left: 60 }}
+                  axisRight={null}
+                />
+              </div>
+            </CardContent>
+          </Card>
+            </div>
             <div className="mb-6 flex items-center  ">
               <Input className="flex-grow mr-2 text-[#D1D5DB] bg-[#1E2A38] broder-1-[#3A506B] placeholder-[#6B7280]" placeholder="Search incidents..." />
               <Button variant="outline" className="text-white ">
